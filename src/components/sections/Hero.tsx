@@ -4,7 +4,7 @@ import { Map, MessageSquare, AlertCircle } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section id="network" className="relative min-h-[100svh] pt-20 pb-12 lg:pt-28 lg:pb-20 flex items-center overflow-hidden bg-white">
+    <section id="network" className="relative min-h-[100svh] pt-20 pb-12 lg:pt-24 lg:pb-16 flex items-center overflow-hidden bg-white">
       
       {/* 
         The background.png provided by the user is a fully composed graphic 
@@ -25,8 +25,8 @@ export default function Hero() {
       {/* Gradient fade on the left to ensure text readability against the busy background graphic */}
       <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent w-full lg:w-[60%] z-0 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 relative">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full z-10 relative">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 xl:gap-20">
           
           {/* LEFT: Typography & CTAs */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
@@ -38,12 +38,12 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 leading-[1.05] tracking-tight text-[var(--text-primary)]">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-6 leading-[1.0] tracking-tight text-[var(--text-primary)]">
               Stay connected.<br />
               Even when you're <span className="text-[var(--green)]">offline.</span>
             </h1>
 
-            <p className="text-[15px] sm:text-[17px] text-[var(--text-secondary)] leading-relaxed mb-7 max-w-md font-medium">
+            <p className="text-[15px] sm:text-[16px] lg:text-[18px] text-[var(--text-secondary)] leading-relaxed mb-7 max-w-lg font-medium">
               Bharat Maps uses Bluetooth, mesh networking, offline maps and GPS to keep people connected when conventional connectivity isn't available.
             </p>
 
@@ -67,8 +67,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RIGHT: Phone — hidden on mobile */}
-          <div className="hidden lg:flex w-full lg:w-1/2 relative justify-center lg:justify-end items-center min-h-[480px]">
+          {/* RIGHT: Phone — hidden on mobile, visible lg+ */}
+          <div className="hidden lg:flex w-full lg:w-1/2 xl:w-[48%] relative justify-center lg:justify-end items-center min-h-[520px]">
             
             {/* We place the PremiumPhoneWrapper slightly off-center to align with the India mesh graphic in the background */}
             <div className="relative rotate-[-2deg] hover:rotate-0 transition-transform duration-700">
