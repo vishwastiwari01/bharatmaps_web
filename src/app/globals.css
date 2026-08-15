@@ -1,51 +1,49 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 :root {
-  /* Core palette */
-  --navy:       #05080f;
-  --navy2:      #080d1a;
-  --navy3:      #0d1428;
-  --navy4:      #111c38;
-  --navy5:      #162245;
+  /* ── Background (white-first) */
+  --bg:          #ffffff;
+  --bg2:         #fafafa;
+  --bg3:         #f4f4f5;
+  --bg4:         #efefef;
+  --bg-card:     #ffffff;
 
-  /* Tricolor */
-  --saffron:    #FF9933;
-  --saffron-dim:#cc7a29;
-  --saffron-glow: rgba(255,153,51,0.15);
-  --india-green:#138808;
-  --india-green-glow: rgba(19,136,8,0.15);
-  --india-blue: #000080;
-  --india-white:#f8f5ee;
+  /* ── Tricolor */
+  --saffron:     #FF9933;
+  --saffron-mid: #e07800;
+  --saffron-dim: rgba(255,153,51,0.12);
+  --green:       #138808;
+  --green-mid:   #0e6b06;
+  --green-dim:   rgba(19,136,8,0.10);
+  --navy:        #000066;
+  --navy-mid:    #000099;
+  --navy-dim:    rgba(0,0,102,0.08);
 
-  /* Map tones */
-  --map-blue:   #1e40af;
-  --map-teal:   #0d9488;
-  --map-glow:   rgba(13,148,136,0.12);
+  /* ── Text */
+  --text-primary:   #0f172a;
+  --text-secondary: #334155;
+  --text-muted:     #64748b;
+  --text-faint:     #94a3b8;
 
-  /* SOS */
-  --sos-red:    #ef4444;
-  --sos-glow:   rgba(239,68,68,0.2);
+  /* ── Border */
+  --border:      rgba(0,0,0,0.07);
+  --border2:     rgba(0,0,0,0.12);
+  --border-saf:  rgba(255,153,51,0.35);
+  --border-grn:  rgba(19,136,8,0.30);
 
-  /* Text */
-  --text-primary:   #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted:     #475569;
+  /* ── Shadow */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --shadow-lg:   0 8px 32px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
 
-  /* Border */
-  --border:     rgba(255,255,255,0.06);
-  --border2:    rgba(255,255,255,0.10);
-  --border3:    rgba(255,153,51,0.25);
-
-  /* Font */
-  --font-sans:  'Inter', system-ui, sans-serif;
-  --font-mono:  'IBM Plex Mono', monospace;
+  /* ── Font */
+  --font-sans:   'Inter', system-ui, sans-serif;
+  --font-mono:   'IBM Plex Mono', monospace;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
@@ -54,200 +52,230 @@ html {
 }
 
 body {
-  background-color: var(--navy);
+  background: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
-/* Tricolor top bar */
+/* ── Tricolor bar ── */
 .tricolor-bar {
-  height: 3px;
-  background: linear-gradient(90deg, #FF9933 33.33%, #f8f5ee 33.33% 66.66%, #138808 66.66%);
+  height: 4px;
+  background: linear-gradient(90deg,
+    #FF9933 0% 33.33%,
+    #ffffff 33.33% 66.66%,
+    #138808 66.66% 100%
+  );
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--navy2); }
-::-webkit-scrollbar-thumb { background: var(--navy5); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--saffron-dim); }
+/* ── Scrollbar ── */
+::-webkit-scrollbar          { width: 6px; }
+::-webkit-scrollbar-track    { background: #f1f5f9; }
+::-webkit-scrollbar-thumb    { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #FF9933; }
 
-/* Selection */
-::selection { background: rgba(255,153,51,0.25); color: #fff; }
+::selection { background: rgba(255,153,51,0.25); color: #000; }
 
-/* ========================
+/* ══════════════════════════════════
    ANIMATIONS
-======================== */
+══════════════════════════════════ */
 
 @keyframes ble-pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.8); opacity: 0.4; }
-  100% { transform: scale(2.5); opacity: 0; }
+  0%   { transform: scale(1);   opacity: 0.8; }
+  50%  { transform: scale(1.9); opacity: 0.25; }
+  100% { transform: scale(2.6); opacity: 0; }
 }
 
 @keyframes sos-ripple {
-  0% { transform: scale(0.5); opacity: 1; }
-  100% { transform: scale(3); opacity: 0; }
+  0%   { transform: scale(0.4); opacity: 1; }
+  100% { transform: scale(3.2); opacity: 0; }
 }
 
-@keyframes mesh-dash {
-  0% { stroke-dashoffset: 1000; opacity: 0; }
-  20% { opacity: 1; }
-  100% { stroke-dashoffset: 0; opacity: 0.6; }
+@keyframes mesh-flow {
+  0%   { stroke-dashoffset: 80; opacity: 0; }
+  15%  { opacity: 1; }
+  100% { stroke-dashoffset: 0;  opacity: 0.5; }
 }
 
-@keyframes node-glow {
-  0%, 100% { filter: drop-shadow(0 0 4px rgba(255,153,51,0.4)); }
-  50% { filter: drop-shadow(0 0 12px rgba(255,153,51,0.9)); }
+@keyframes node-breathe {
+  0%,100% { filter: drop-shadow(0 0 3px rgba(255,153,51,0.5)); }
+  50%      { filter: drop-shadow(0 0 10px rgba(255,153,51,1)); }
 }
 
-@keyframes float-up {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0px); }
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
 }
 
-@keyframes scan-line {
-  0% { top: 0%; }
-  100% { top: 100%; }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
-@keyframes tricolor-slide {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+@keyframes saffron-slide {
+  0%   { left: -100%; }
+  100% { left: 100%; }
 }
 
-@keyframes counter-up {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* Utility */
+.animate-ble-pulse    { animation: ble-pulse 2s ease-out infinite; }
+.animate-sos-ripple   { animation: sos-ripple 1.4s ease-out infinite; }
+.animate-node-breathe { animation: node-breathe 2s ease-in-out infinite; }
+.animate-float        { animation: float 3.5s ease-in-out infinite; }
+.animate-fade-up      { animation: fade-up 0.55s ease both; }
+.animate-spin-slow    { animation: spin-slow 18s linear infinite; }
 
-/* Utility classes */
-.animate-ble-pulse { animation: ble-pulse 2s ease-out infinite; }
-.animate-sos-ripple { animation: sos-ripple 1.5s ease-out infinite; }
-.animate-node-glow { animation: node-glow 2s ease-in-out infinite; }
-.animate-float { animation: float-up 3s ease-in-out infinite; }
-.animate-fade-in-up { animation: fade-in-up 0.6s ease forwards; }
-
-.mesh-line {
-  stroke-dasharray: 8 4;
-  stroke-dashoffset: 1000;
-  animation: mesh-dash 3s linear infinite;
-}
-
-/* Glass card */
-.glass-card {
-  background: rgba(255,255,255,0.03);
+/* ── Card ── */
+.card {
+  background: var(--bg-card);
   border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
-  transition: border-color 0.3s ease, background 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
-.glass-card:hover {
-  background: rgba(255,255,255,0.05);
+.card:hover {
+  box-shadow: var(--shadow-md);
   border-color: var(--border2);
+  transform: translateY(-2px);
 }
 
-/* Saffron glow button */
-.btn-saffron {
-  background: linear-gradient(135deg, #FF9933, #e67e00);
+/* ── Button saffron ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #FF9933 0%, #e07800 100%);
   color: #fff;
   font-weight: 600;
+  font-family: var(--font-sans);
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.btn-saffron::before {
+.btn-primary::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.2s;
 }
-.btn-saffron:hover::before { opacity: 1; }
-.btn-saffron:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,153,51,0.35); }
-.btn-saffron:active { transform: translateY(0); }
+.btn-primary:hover::after  { opacity: 1; }
+.btn-primary:hover         { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(255,153,51,0.4); }
+.btn-primary:active        { transform: translateY(0); }
 
-/* Ghost button */
-.btn-ghost {
+/* ── Button outline ── */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   background: transparent;
   color: var(--text-primary);
-  border: 1px solid var(--border2);
-  cursor: pointer;
+  border: 1.5px solid var(--border2);
   font-weight: 500;
+  font-family: var(--font-sans);
+  cursor: pointer;
   transition: all 0.2s ease;
 }
-.btn-ghost:hover {
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(255,153,51,0.4);
-  color: var(--saffron);
+.btn-outline:hover {
+  border-color: var(--saffron);
+  color: var(--saffron-mid);
+  background: var(--saffron-dim);
 }
 
-/* Section heading */
+/* ── Section label ── */
 .section-label {
+  display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--saffron);
+  background: var(--saffron-dim);
+  border: 1px solid var(--border-saf);
+  padding: 3px 10px;
+  border-radius: 4px;
 }
 
-/* Mono tag */
-.mono-tag {
+/* ── Mono small ── */
+.mono {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
 }
 
-/* India map glow */
-.india-map-glow {
-  filter: drop-shadow(0 0 20px rgba(255,153,51,0.15)) drop-shadow(0 0 60px rgba(13,148,136,0.1));
-}
-
-/* Gradient text saffron */
-.text-gradient-saffron {
-  background: linear-gradient(135deg, #FF9933 0%, #ffcc80 50%, #FF9933 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Green status */
-.status-online {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--india-green);
-  box-shadow: 0 0 8px rgba(19,136,8,0.8);
-  animation: node-glow 2s ease-in-out infinite;
-}
-
-/* Dotted India map pattern bg */
-.india-dot-bg {
-  background-image: radial-gradient(circle, rgba(255,153,51,0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* Horizontal rule tricolor */
+/* ── Tricolor HR ── */
 .hr-tricolor {
   border: none;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #FF9933 20%, #f8f5ee 50%, #138808 80%, transparent);
-  opacity: 0.3;
+  height: 1.5px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #FF9933 20%,
+    rgba(0,0,0,0.12) 50%,
+    #138808 80%,
+    transparent 100%
+  );
+  opacity: 0.5;
+  margin: 0;
 }
 
-/* SOS badge */
+/* ── Status dot green ── */
+.dot-green {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 2px rgba(19,136,8,0.2);
+  animation: node-breathe 2s ease-in-out infinite;
+}
+
+/* ── SOS badge ── */
 .sos-badge {
-  background: rgba(239,68,68,0.15);
-  border: 1px solid rgba(239,68,68,0.4);
-  color: #ef4444;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 0.15em;
-  padding: 3px 8px;
+  color: #dc2626;
+  border: 1.5px solid rgba(220,38,38,0.3);
+  background: rgba(220,38,38,0.06);
+  padding: 2px 8px;
   border-radius: 4px;
+  animation: node-breathe 1s ease-in-out infinite;
+}
+
+/* ── Mesh line SVG ── */
+.mesh-line {
+  stroke-dasharray: 6 3;
+  animation: mesh-flow 3s linear infinite;
+}
+
+/* ── India map container glow ── */
+.india-hero-img {
+  filter: drop-shadow(0 20px 60px rgba(255,153,51,0.18))
+          drop-shadow(0 4px 20px rgba(19,136,8,0.12));
+}
+
+/* ── Feature card accent bar (left) ── */
+.feature-card-saffron { border-left: 3px solid var(--saffron); }
+.feature-card-green   { border-left: 3px solid var(--green); }
+.feature-card-navy    { border-left: 3px solid var(--navy); }
+.feature-card-red     { border-left: 3px solid #dc2626; }
+
+/* ── Section divider pill ── */
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
 }
