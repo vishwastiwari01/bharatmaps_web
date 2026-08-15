@@ -1,7 +1,11 @@
 export default function Privacy() {
   return (
-    <section id="safety" className="py-32 bg-[var(--bg-secondary)] border-t border-[var(--border-subtle)] text-center">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="safety" className="py-32 bg-[var(--bg-secondary)] border-t border-[var(--border-subtle)] text-center relative overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.10] pointer-events-none"
+        style={{ backgroundImage: "url('/background.png')" }}
+      />
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="w-16 h-16 mx-auto bg-white border border-[var(--border-subtle)] rounded-2xl flex items-center justify-center shadow-sm mb-8">
           <svg className="w-8 h-8 text-[var(--text-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">

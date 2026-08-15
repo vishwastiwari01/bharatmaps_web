@@ -17,8 +17,12 @@ export default function AppShowcase() {
   const y2 = useTransform(scrollYProgress, [0, 1], [100, -100])
   
   return (
-    <section id="features" className="bg-white py-32" ref={containerRef}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-48">
+    <section id="features" className="bg-white py-32 relative overflow-hidden" ref={containerRef}>
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.10] pointer-events-none"
+        style={{ backgroundImage: "url('/background.png')" }}
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-48 relative z-10">
         
         {/* Feature 1: Offline Messaging */}
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-32">

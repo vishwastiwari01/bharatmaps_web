@@ -24,7 +24,11 @@ export default function OfflineSimulator() {
 
   return (
     <section className="py-32 bg-[var(--bg-primary)] overflow-hidden relative border-t border-[var(--border-subtle)]">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.10] pointer-events-none"
+        style={{ backgroundImage: "url('/background.png')" }}
+      />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-6 font-bold tracking-tight">
