@@ -32,7 +32,7 @@ export async function getCommunityVotes(question_id: string) {
     .eq('question_id', question_id)
   if (error) return null
   const counts: Record<string, number> = {}
-  data?.forEach((row) => {
+  data?.forEach((row: { option_selected: string }) => {
     counts[row.option_selected] = (counts[row.option_selected] || 0) + 1
   })
   return counts

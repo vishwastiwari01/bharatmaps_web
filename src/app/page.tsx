@@ -1,37 +1,33 @@
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import Hero from '@/components/sections/Hero'
-import Problem from '@/components/sections/Problem'
-import HowItWorks from '@/components/sections/HowItWorks'
-import Features from '@/components/sections/Features'
-import SOSExperience from '@/components/sections/SOSExperience'
-import OfflineMaps from '@/components/sections/OfflineMaps'
-import Scenarios from '@/components/sections/Scenarios'
-import BetaRegistration from '@/components/sections/BetaRegistration'
-import CommunityFeedback from '@/components/sections/CommunityFeedback'
-import Roadmap from '@/components/sections/Roadmap'
-import Technical from '@/components/sections/Technical'
-import IndiaFirst from '@/components/sections/IndiaFirst'
-import Trust from '@/components/sections/Trust'
+import TheIdea from '@/components/sections/TheIdea'
+import OfflineSimulator from '@/components/sections/OfflineSimulator'
+import AppShowcase from '@/components/sections/AppShowcase'
+import HowItWorksStory from '@/components/sections/HowItWorksStory'
+import SOSOrbital from '@/components/sections/SOSOrbital'
+import OfflineNavigation from '@/components/sections/OfflineNavigation'
+import ScenariosGallery from '@/components/sections/ScenariosGallery'
+import Privacy from '@/components/sections/Privacy'
+import Community from '@/components/sections/Community'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <>
       <Navbar />
-      <Hero />
-      <HowItWorks />
-      <Features />
-      <IndiaFirst />
-      <SOSExperience />
-      <Scenarios />
-      <OfflineMaps />
-      <Problem />
-      <Technical />
-      <Roadmap />
-      <CommunityFeedback />
-      <BetaRegistration />
-      <Trust />
+      <main>
+        <Hero />
+        <TheIdea />
+        <OfflineSimulator />
+        <AppShowcase />
+        <HowItWorksStory />
+        <SOSOrbital />
+        <OfflineNavigation />
+        <ScenariosGallery />
+        <Privacy />
+        <Community />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }

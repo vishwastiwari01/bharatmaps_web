@@ -2,127 +2,57 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
-const NAV_LINKS = [
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Features',     href: '#features' },
-  { label: 'Safety',       href: '#sos' },
-  { label: 'Community',    href: '#community' },
-  { label: 'Roadmap',      href: '#roadmap' },
-]
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 48)
-    window.addEventListener('scroll', fn, { passive: true })
-    return () => window.removeEventListener('scroll', fn)
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <>
-      {/* Tricolor stripe — always visible */}
-      <div className="tricolor-bar fixed top-0 left-0 right-0 z-50" />
-
-      <nav
-        className={`fixed top-[4px] left-0 right-0 z-40 transition-all duration-300 ${
-          scrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-sm border-b border-black/6'
-            : 'bg-white/80 backdrop-blur-md'
+    <header className="fixed top-4 inset-x-0 z-[100] flex justify-center px-4 transition-all duration-500">
+      <div 
+        className={`w-full max-w-5xl flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500 ${
+          scrolled 
+            ? 'bg-white/80 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50' 
+            : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group select-none">
-              {/* Icon */}
-              <div className="relative w-9 h-9 flex-shrink-0">
-                <svg viewBox="0 0 36 36" className="w-full h-full">
-                  {/* Outer ring — saffron */}
-                  <circle cx="18" cy="18" r="16" fill="none" stroke="#FF9933" strokeWidth="1.8" />
-                  {/* India fill */}
-                  <path
-                    d="M18 5 C21 6,25 9,26 13 C28 16,27 20,25 23 C23 26,20 28,18 29 C16 28,13 26,11 23 C9 20,8 16,10 13 C11 9,15 6,18 5Z"
-                    fill="rgba(255,153,51,0.12)" stroke="#FF9933" strokeWidth="1.2"
-                  />
-                  {/* Centre Chakra dot */}
-                  <circle cx="18" cy="18" r="2.5" fill="#138808" />
-                  <circle cx="18" cy="18" r="1"   fill="#000066" />
-                  {/* BLE rings */}
-                  <circle cx="18" cy="18" r="6"  fill="none" stroke="#FF9933" strokeWidth="0.6" opacity="0.4" />
-                  <circle cx="18" cy="18" r="10" fill="none" stroke="#FF9933" strokeWidth="0.3" opacity="0.2" />
-                </svg>
-              </div>
-
-              <div>
-                <div className="text-[#0f172a] font-black text-base tracking-widest leading-none group-hover:text-[#FF9933] transition-colors">
-                  BHARAT MAPS
-                </div>
-                <div className="text-[9px] font-mono text-[#FF9933] tracking-[0.2em] mt-0.5 opacity-70 uppercase">
-                  Offline First
-                </div>
-              </div>
-            </Link>
-
-            {/* Desktop links */}
-            <div className="hidden md:flex items-center gap-7">
-              {NAV_LINKS.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  className="text-sm text-slate-600 hover:text-[#FF9933] font-medium transition-colors tracking-wide"
-                >
-                  {l.label}
-                </a>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div className="hidden md:flex items-center gap-3">
-              <a href="#beta" className="btn-primary px-5 py-2.5 rounded-xl text-sm">
-                Join Beta 🇮🇳
-              </a>
-            </div>
-
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setOpen(!open)}
-              className="md:hidden p-2 text-slate-600 hover:text-[#FF9933] transition-colors"
-              aria-label="Toggle menu"
-            >
-              <div className="w-5 space-y-[5px]">
-                <span className={`block h-0.5 bg-current transition-all duration-300 origin-center ${open ? 'rotate-45 translate-y-[7px]' : ''}`} />
-                <span className={`block h-0.5 bg-current transition-all duration-300 ${open ? 'opacity-0 scale-x-0' : ''}`} />
-                <span className={`block h-0.5 bg-current transition-all duration-300 origin-center ${open ? '-rotate-45 -translate-y-[7px]' : ''}`} />
-              </div>
-            </button>
+        
+        {/* Left: Logo */}
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="relative w-7 h-7 flex-shrink-0">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+              <path d="M12 2C8.68629 2 6 4.68629 6 8C6 11.866 12 22 12 22" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M12 22C12 22 18 11.866 18 8" stroke="#138A3D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="12" cy="8" r="3" fill="#172B5B"/>
+            </svg>
           </div>
+          <span className="font-bold text-[16px] tracking-tight text-[var(--text-primary)] transition-colors group-hover:text-[var(--navy-nav)]">
+            Bharat Maps
+          </span>
+        </Link>
+
+        {/* Center: Links */}
+        <nav className="hidden md:flex items-center gap-1 bg-gray-50/50 rounded-full p-1 border border-gray-100/50">
+          <Link href="#features" className="text-[13px] font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white px-4 py-1.5 rounded-full transition-all">Features</Link>
+          <Link href="#how-it-works" className="text-[13px] font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white px-4 py-1.5 rounded-full transition-all">How it works</Link>
+          <Link href="#safety" className="text-[13px] font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white px-4 py-1.5 rounded-full transition-all">Safety</Link>
+        </nav>
+
+        {/* Right: Join Beta CTA */}
+        <div className="flex items-center">
+          <a 
+            href="#community" 
+            className="btn-primary px-5 py-2.5 rounded-full text-[13px] font-bold btn-shimmer border border-transparent shadow-md hover:shadow-lg transition-all"
+          >
+            Join Beta
+          </a>
         </div>
 
-        {/* Mobile menu */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 border-t border-black/5 ${open ? 'max-h-[400px]' : 'max-h-0'}`}>
-          <div className="bg-white px-4 pb-6 pt-3 space-y-0.5">
-            {NAV_LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="block py-3 text-slate-600 hover:text-[#FF9933] border-b border-black/5 text-sm font-medium transition-colors"
-              >
-                {l.label}
-              </a>
-            ))}
-            <div className="pt-4">
-              <a href="#beta" onClick={() => setOpen(false)}
-                className="btn-primary w-full py-3 rounded-xl text-sm">
-                Join Beta 🇮🇳
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </>
+      </div>
+    </header>
   )
 }

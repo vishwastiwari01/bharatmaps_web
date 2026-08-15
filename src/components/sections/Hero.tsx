@@ -1,158 +1,122 @@
 'use client'
-import Image from 'next/image'
+import { PremiumPhoneWrapper } from '@/components/ui/PremiumPhoneWrapper'
+import { Map, MessageSquare, AlertCircle } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-white pt-20">
+    <section id="network" className="relative min-h-[100vh] pt-24 pb-16 flex items-center overflow-hidden bg-white">
+      
+      {/* 
+        The background.png provided by the user is a fully composed graphic 
+        (mountains on left, India mesh on right). 
+        We use it explicitly as the hero backdrop.
+      */}
+      <div 
+        className="absolute inset-0 bg-cover bg-right-bottom md:bg-center bg-no-repeat z-0"
+        style={{ backgroundImage: "url('/background.png')" }}
+      />
+      
+      {/* We blend in the independanceday.png or India.png if needed to make it 'graphic filled' */}
+      <div 
+        className="absolute inset-0 bg-contain bg-center bg-no-repeat opacity-40 mix-blend-multiply z-0 pointer-events-none"
+        style={{ backgroundImage: "url('/independanceday.png')" }}
+      />
 
-      {/* Very subtle warm tint */}
-      <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 80% 60% at 65% 50%, rgba(255,153,51,0.06) 0%, transparent 70%)' }} />
+      {/* Gradient fade on the left to ensure text readability against the busy background graphic */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent w-full lg:w-[60%] z-0 pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[80vh]">
-
-          {/* ── LEFT: Text ── */}
-          <div className="order-2 lg:order-1 flex flex-col justify-center">
-
-            {/* Independence Day badge */}
-            <div className="flex items-center gap-2 mb-5">
-              <span className="text-xl">🇮🇳</span>
-              <span className="mono text-[10px] text-[#FF9933] tracking-[0.2em] uppercase border border-[#FF9933]/40 bg-[#FF9933]/6 px-3 py-1 rounded-sm font-medium">
-                India's 80th Independence Day Launch
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 relative mt-12 md:mt-0">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+          
+          {/* LEFT: Typography & CTAs */}
+          <div className="w-full lg:w-1/2 flex flex-col justify-center">
+            
+            <div className="inline-flex items-center gap-2 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-[var(--green)]" />
+              <span className="mono text-[10px] font-bold tracking-widest text-[var(--text-secondary)] uppercase">
+                Offline Communication Network
               </span>
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {[
-                { label: 'OFFLINE-FIRST', color: '#FF9933', bg: 'rgba(255,153,51,0.08)', border: 'rgba(255,153,51,0.3)' },
-                { label: 'ANDROID BETA',  color: '#138808', bg: 'rgba(19,136,8,0.08)',   border: 'rgba(19,136,8,0.25)' },
-                { label: 'BLE MESH',      color: '#000066', bg: 'rgba(0,0,102,0.06)',    border: 'rgba(0,0,102,0.2)' },
-              ].map((t) => (
-                <span key={t.label} className="mono text-[10px] tracking-[0.15em] uppercase px-2.5 py-1 rounded-sm font-medium border"
-                  style={{ color: t.color, background: t.bg, borderColor: t.border }}>
-                  {t.label}
-                </span>
-              ))}
-            </div>
-
-            {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl xl:text-7xl font-black tracking-tight leading-[0.95] mb-5">
-              <span className="text-[#0f172a]">BHARAT</span>
-              <br />
-              <span style={{
-                background: 'linear-gradient(120deg, #FF9933 0%, #e07000 45%, #138808 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>MAPS</span>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-[1.05] tracking-tight text-[var(--text-primary)]">
+              Stay connected.<br />
+              Even when you're <span className="text-[var(--green)]">offline.</span>
             </h1>
 
-            <p className="text-xl sm:text-2xl font-semibold text-slate-700 mb-2 leading-snug">
-              Communication. Navigation. Safety.
-            </p>
-            <p className="text-xl sm:text-2xl font-medium text-[#FF9933] mb-5 leading-snug">
-              Without the Internet.
+            <p className="text-[16px] sm:text-[18px] text-[var(--text-secondary)] leading-relaxed mb-10 max-w-lg font-medium">
+              Bharat Maps uses Bluetooth, mesh networking, offline maps and GPS to keep people connected when conventional connectivity isn't available.
             </p>
 
-            <p className="text-slate-500 text-base leading-relaxed mb-8 max-w-md">
-              A decentralized offline network built for India — connecting nearby people
-              through Bluetooth, mesh networking and offline maps.
-              <br />
-              <span className="font-semibold text-slate-700">When the internet disappears, the network doesn't have to.</span>
-            </p>
+            <div className="flex flex-wrap items-center gap-4 mb-8">
+              <a href="#community" className="btn-primary px-6 py-3.5 rounded-xl text-[14px] btn-shimmer border border-transparent shadow-md hover:shadow-lg">
+                Join Beta
+              </a>
+              <a href="#how-it-works" className="btn-outline px-6 py-3.5 rounded-xl text-[14px] bg-white/80 backdrop-blur-sm">
+                Explore the Network
+              </a>
+            </div>
 
-            {/* Phone chain */}
-            <div className="flex items-center gap-1 mb-8 flex-wrap">
-              {['📱', '📱', '📱', '📱'].map((ph, i) => (
-                <div key={i} className="flex items-center gap-1">
-                  <div className="flex flex-col items-center">
-                    <div className="w-9 h-9 rounded-xl border border-[#FF9933]/30 bg-[#FF9933]/6 flex items-center justify-center text-base">
-                      {ph}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-4">
+              <span className="mono text-[10px] tracking-widest text-[var(--text-secondary)] font-bold">BLE</span>
+              <span className="text-[var(--border-medium)]">•</span>
+              <span className="mono text-[10px] tracking-widest text-[var(--text-secondary)] font-bold">MESH</span>
+              <span className="text-[var(--border-medium)]">•</span>
+              <span className="mono text-[10px] tracking-widest text-[var(--text-secondary)] font-bold">OFFLINE MAPS</span>
+              <span className="text-[var(--border-medium)]">•</span>
+              <span className="mono text-[10px] tracking-widest text-[var(--text-secondary)] font-bold">GPS</span>
+            </div>
+          </div>
+
+          {/* RIGHT: Floating App UI showing "Real Product" */}
+          <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end items-center min-h-[500px]">
+            
+            {/* We place the PremiumPhoneWrapper slightly off-center to align with the India mesh graphic in the background */}
+            <div className="relative rotate-[-2deg] hover:rotate-0 transition-transform duration-700">
+              <PremiumPhoneWrapper scale={0.9}>
+                <div className="flex-1 relative p-4 flex flex-col pt-12">
+                  <div className="flex-1 bg-[#0b2440] rounded-xl border border-white/10 relative overflow-hidden">
+                    {/* Dark App Map Background */}
+                    <div className="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/cartographer.png')]" />
+                    
+                    {/* Simulated Map UI Elements */}
+                    <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full opacity-60">
+                      <path d="M 20 80 Q 50 20 80 80" fill="none" stroke="var(--saffron)" strokeWidth="1" strokeDasharray="2 2" />
+                      <circle cx="50" cy="50" r="15" fill="var(--green)" opacity="0.1" />
+                    </svg>
+
+                    <div className="absolute top-1/2 left-1/2 w-4 h-4 rounded-full bg-[var(--green)] -translate-x-1/2 -translate-y-1/2 shadow-[0_0_15px_var(--green)] border-2 border-white flex items-center justify-center">
+                      <div className="absolute w-12 h-12 rounded-full border border-[var(--green)] animate-ping" />
                     </div>
-                    <span className="mono text-[8px] text-slate-400 mt-0.5">PHONE</span>
+
+                    <div className="absolute top-4 left-4 right-4 bg-white/10 backdrop-blur-md rounded-lg p-2 border border-white/10 flex justify-between items-center">
+                      <span className="text-white text-[10px] font-mono">NODES: 12</span>
+                      <div className="w-2 h-2 rounded-full bg-[var(--green)] animate-pulse" />
+                    </div>
                   </div>
-                  {i < 3 && (
-                    <div className="flex items-center gap-0.5 -mt-3 mx-0.5">
-                      <div className="w-1 h-1 rounded-full bg-[#FF9933]/60" />
-                      <div className="w-4 h-px bg-[#FF9933]/30" />
-                      <div className="w-1 h-1 rounded-full bg-[#FF9933]/60" />
-                    </div>
-                  )}
                 </div>
-              ))}
-              <div className="ml-2 flex items-center gap-1.5 -mt-3">
-                <div className="dot-green w-6 h-6 rounded-full border border-[#138808]/30 bg-[#138808]/8 flex items-center justify-center text-xs">✓</div>
-                <span className="mono text-[9px] text-[#138808] font-semibold uppercase tracking-wide">No Internet</span>
-              </div>
-            </div>
+                {/* Bottom Nav */}
+                <div className="h-16 border-t border-white/10 flex justify-around items-center px-2 bg-black/40 backdrop-blur-md">
+                  <Map className="w-5 h-5 text-white" />
+                  <MessageSquare className="w-5 h-5 text-white/40" />
+                  <AlertCircle className="w-5 h-5 text-white/40" />
+                </div>
+              </PremiumPhoneWrapper>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-3 mb-5">
-              <a href="#beta" className="btn-primary px-7 py-3.5 rounded-xl text-[15px]">
-                Join the Beta
-              </a>
-              <a href="#how-it-works" className="btn-outline px-7 py-3.5 rounded-xl text-[15px]">
-                See How It Works
-              </a>
-            </div>
-
-            <a href="#beta" className="text-sm text-slate-400 hover:text-[#FF9933] transition-colors underline underline-offset-2">
-              I'm Interested in Testing Bharat Maps →
-            </a>
-          </div>
-
-          {/* ── RIGHT: India image ── */}
-          <div className="order-1 lg:order-2 flex items-center justify-center relative">
-            {/* Soft background glow circles */}
-            <div className="absolute w-80 h-80 rounded-full opacity-15 pointer-events-none"
-              style={{ background: 'radial-gradient(circle, #FF9933 0%, transparent 70%)' }} />
-            <div className="absolute w-64 h-64 rounded-full opacity-10 pointer-events-none translate-x-16 translate-y-10"
-              style={{ background: 'radial-gradient(circle, #138808 0%, transparent 70%)' }} />
-
-            <div className="relative w-full max-w-lg xl:max-w-xl animate-float">
-              <Image
-                src="/india.png"
-                alt="India — monuments, map, and tricolor representing Bharat Maps' India-first vision"
-                width={900}
-                height={600}
-                priority
-                className="india-hero-img w-full h-auto object-contain"
-                style={{ mixBlendMode: 'multiply' }}
-              />
-
-              {/* Floating badges over the image */}
-              <div className="absolute top-4 right-4 bg-white rounded-xl px-3 py-2 shadow-md border border-black/6 flex items-center gap-2">
-                <div className="dot-green" />
-                <span className="mono text-[10px] text-[#138808] font-semibold tracking-wide">MESH ACTIVE</span>
-              </div>
-
-              <div className="absolute bottom-8 left-4 bg-white rounded-xl px-3 py-2 shadow-md border border-[#FF9933]/25 flex items-center gap-2">
-                <span className="text-sm">📡</span>
+              {/* Additional floating UI element to enhance "real app" feel */}
+              <div className="absolute -bottom-8 -left-12 bg-white rounded-xl p-4 shadow-2xl border border-[var(--border-subtle)] z-20 flex items-center gap-3 animate-[bounce_4s_infinite]">
+                <div className="w-8 h-8 rounded-full bg-[var(--green)]/10 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-[var(--green)] animate-pulse" />
+                </div>
                 <div>
-                  <div className="mono text-[9px] text-slate-400 leading-none mb-0.5">BLE RANGE</div>
-                  <div className="mono text-[11px] text-[#FF9933] font-bold leading-none">~50–100m</div>
+                  <p className="mono text-[10px] text-[var(--text-secondary)] font-bold mb-0.5">LOCAL MESH</p>
+                  <p className="text-[14px] font-bold text-[var(--text-primary)]">Connected</p>
                 </div>
               </div>
 
-              <div className="absolute bottom-8 right-4 sos-badge">
-                SOS READY
-              </div>
-            </div>
-
-            {/* Label */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 mono text-[9px] text-slate-300 tracking-widest uppercase">
-              Conceptual visualization
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-50">
-        <span className="mono text-[9px] text-slate-400 tracking-widest uppercase">Scroll</span>
-        <div className="w-px h-7 bg-gradient-to-b from-[#FF9933] to-transparent" />
+        </div>
       </div>
     </section>
   )
