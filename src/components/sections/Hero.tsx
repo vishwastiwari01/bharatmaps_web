@@ -73,32 +73,92 @@ export default function Hero() {
             {/* We place the PremiumPhoneWrapper slightly off-center to align with the India mesh graphic in the background */}
             <div className="relative rotate-[-2deg] hover:rotate-0 transition-transform duration-700">
               <PremiumPhoneWrapper scale={0.9}>
-                <div className="flex-1 relative p-4 flex flex-col pt-12">
-                  <div className="flex-1 bg-[#0b2440] rounded-xl border border-white/10 relative overflow-hidden">
-                    {/* Dark App Map Background */}
-                    <div className="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/cartographer.png')]" />
-                    
-                    {/* Simulated Map UI Elements */}
-                    <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full opacity-60">
-                      <path d="M 20 80 Q 50 20 80 80" fill="none" stroke="var(--saffron)" strokeWidth="1" strokeDasharray="2 2" />
-                      <circle cx="50" cy="50" r="15" fill="var(--green)" opacity="0.1" />
-                    </svg>
+                <div className="flex-1 flex flex-col bg-[#050e1a] pt-10 rounded-[2.2rem] overflow-hidden relative">
 
-                    <div className="absolute top-1/2 left-1/2 w-4 h-4 rounded-full bg-[var(--green)] -translate-x-1/2 -translate-y-1/2 shadow-[0_0_15px_var(--green)] border-2 border-white flex items-center justify-center">
-                      <div className="absolute w-12 h-12 rounded-full border border-[var(--green)] animate-ping" />
+                  {/* Header */}
+                  <div className="flex flex-col items-center px-5 pt-4 pb-2 relative z-10">
+                    {/* Logo Icon */}
+                    <div className="mb-3">
+                      <svg viewBox="0 0 32 32" fill="none" className="w-9 h-9">
+                        <path d="M16 2C11.582 2 8 5.582 8 10C8 15.644 16 30 16 30" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M16 30C16 30 24 15.644 24 10" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <circle cx="16" cy="10" r="4" fill="#172B5B" stroke="white" strokeWidth="1.5"/>
+                        <circle cx="16" cy="10" r="2" fill="white"/>
+                      </svg>
                     </div>
-
-                    <div className="absolute top-4 left-4 right-4 bg-white/10 backdrop-blur-md rounded-lg p-2 border border-white/10 flex justify-between items-center">
-                      <span className="text-white text-[10px] font-mono">NODES: 12</span>
-                      <div className="w-2 h-2 rounded-full bg-[var(--green)] animate-pulse" />
-                    </div>
+                    <h2 className="text-white font-black text-[17px] tracking-tight mb-0.5">Bharat Maps</h2>
+                    <p className="text-white/60 text-[10px] text-center font-medium leading-tight">
+                      Stay connected.<br/>Even when you&apos;re{' '}
+                      <span className="text-[#22c55e] font-bold">offline.</span>
+                    </p>
                   </div>
-                </div>
-                {/* Bottom Nav */}
-                <div className="h-16 border-t border-white/10 flex justify-around items-center px-2 bg-black/40 backdrop-blur-md">
-                  <Map className="w-5 h-5 text-white" />
-                  <MessageSquare className="w-5 h-5 text-white/40" />
-                  <AlertCircle className="w-5 h-5 text-white/40" />
+
+                  {/* India Mesh Map — SVG */}
+                  <div className="flex-1 flex items-center justify-center px-3 py-1 relative z-10">
+                    {/* Glow */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-32 h-32 rounded-full bg-[#22c55e]/10 blur-2xl" />
+                    </div>
+                    <svg viewBox="0 0 200 220" className="w-full max-w-[180px] relative z-10" fill="none">
+                      {/* India outline — simplified */}
+                      <path
+                        d="M85 15 L100 10 L118 16 L130 24 L140 38 L145 52 L148 68 L142 82 L138 96 L145 108 L150 122 L148 138 L140 152 L128 162 L115 172 L105 180 L100 188 L95 180 L84 170 L72 158 L62 144 L55 128 L50 112 L52 96 L58 80 L54 66 L58 52 L65 38 L75 26 Z"
+                        stroke="#22c55e"
+                        strokeWidth="1.5"
+                        fill="rgba(34,197,94,0.06)"
+                        strokeLinejoin="round"
+                      />
+                      {/* Mesh network nodes */}
+                      {[
+                        [100,10],[130,24],[148,68],[145,122],[105,180],[65,38],[50,112],[58,80],[138,96]
+                      ].map(([x,y],i) => (
+                        <g key={i}>
+                          <circle cx={x} cy={y} r="3" fill="#22c55e" opacity="0.9"/>
+                          <circle cx={x} cy={y} r="6" fill="none" stroke="#22c55e" strokeWidth="0.8" opacity="0.4"/>
+                        </g>
+                      ))}
+                      {/* Connecting lines */}
+                      <path d="M100 10 L130 24 L148 68 L145 122 L105 180" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
+                      <path d="M65 38 L58 80 L50 112" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
+                      <path d="M100 10 L65 38" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
+                      <path d="M130 24 L138 96 L148 68" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
+                      {/* Active pulse node — center */}
+                      <circle cx="100" cy="105" r="4" fill="#22c55e"/>
+                      <circle cx="100" cy="105" r="8" fill="none" stroke="#22c55e" strokeWidth="1" opacity="0.5" className="animate-ping"/>
+                    </svg>
+                  </div>
+
+                  {/* Feature icons row */}
+                  <div className="grid grid-cols-3 gap-1 px-3 pb-3 relative z-10">
+                    {[
+                      { icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z', label: 'Offline\nComm' },
+                      { icon: 'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6-10l6-3m0 13l5.447 2.724A1 1 0 0021 18.618V7.382a1 1 0 00-.553-.894L15 4m0 13V4', label: 'Offline\nMaps' },
+                      { icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z', label: 'Secure\nNetwork' },
+                    ].map((f, i) => (
+                      <div key={i} className="flex flex-col items-center gap-1 bg-white/5 rounded-xl py-2.5">
+                        <svg className="w-5 h-5 text-[#22c55e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d={f.icon}/>
+                        </svg>
+                        <span className="text-white/70 text-[8px] font-semibold text-center leading-tight whitespace-pre-line">{f.label}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTA Button */}
+                  <div className="px-4 pb-2 relative z-10">
+                    <button className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-[#050e1a] font-bold text-[13px] py-3 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                      Get Started
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    </button>
+                    <p className="text-center text-[#22c55e] text-[9px] font-semibold mt-2 tracking-wide cursor-pointer hover:text-white transition-colors">Explore the Network &rsaquo;</p>
+                  </div>
+
+                  {/* Pagination dots */}
+                  <div className="flex justify-center gap-1.5 pb-4 relative z-10">
+                    <div className="w-4 h-1.5 rounded-full bg-[#22c55e]"/>
+                    <div className="w-1.5 h-1.5 rounded-full bg-white/20"/>
+                    <div className="w-1.5 h-1.5 rounded-full bg-white/20"/>
+                  </div>
                 </div>
               </PremiumPhoneWrapper>
 
