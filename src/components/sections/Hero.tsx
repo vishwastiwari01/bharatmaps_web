@@ -102,7 +102,7 @@ export default function Hero() {
                     <svg viewBox="0 0 200 220" className="w-full max-w-[180px] relative z-10" fill="none">
                       {/* India outline — simplified */}
                       <path
-                        d="M85 15 L100 10 L118 16 L130 24 L140 38 L145 52 L148 68 L142 82 L138 96 L145 108 L150 122 L148 138 L140 152 L128 162 L115 172 L105 180 L100 188 L95 180 L84 170 L72 158 L62 144 L55 128 L50 112 L52 96 L58 80 L54 66 L58 52 L65 38 L75 26 Z"
+                        d="M100 15 L108 20 L112 30 L125 45 L135 48 L142 55 L148 53 L162 58 L175 62 L182 75 L180 88 L170 95 L165 85 L158 88 L152 75 L145 80 L138 90 L132 105 L125 125 L118 150 L110 175 L100 200 L90 175 L82 150 L75 125 L65 105 L55 95 L40 92 L35 85 L38 75 L45 70 L55 75 L62 70 L72 65 L78 55 L85 45 L90 35 L95 25 Z"
                         stroke="#22c55e"
                         strokeWidth="1.5"
                         fill="rgba(34,197,94,0.06)"
@@ -110,7 +110,16 @@ export default function Hero() {
                       />
                       {/* Mesh network nodes */}
                       {[
-                        [100,10],[130,24],[148,68],[145,122],[105,180],[65,38],[50,112],[58,80],[138,96]
+                        [100,25], /* North */
+                        [165,75], /* Northeast */
+                        [135,90], /* East */
+                        [115,140], /* Southeast */
+                        [100,185], /* South */
+                        [85,135], /* Southwest */
+                        [45,80], /* West */
+                        [80,65], /* Center-West */
+                        [115,65], /* Center-East */
+                        [100,105] /* Center ping */
                       ].map(([x,y],i) => (
                         <g key={i}>
                           <circle cx={x} cy={y} r="3" fill="#22c55e" opacity="0.9"/>
@@ -118,10 +127,11 @@ export default function Hero() {
                         </g>
                       ))}
                       {/* Connecting lines */}
-                      <path d="M100 10 L130 24 L148 68 L145 122 L105 180" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
-                      <path d="M65 38 L58 80 L50 112" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
-                      <path d="M100 10 L65 38" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
-                      <path d="M130 24 L138 96 L148 68" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
+                      <path d="M100 25 L115 65 L165 75 L135 90 L115 140 L100 185" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
+                      <path d="M100 25 L80 65 L45 80 L85 135 L100 185" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
+                      <path d="M80 65 L100 105 L115 65" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
+                      <path d="M45 80 L100 105 L135 90" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
+                      <path d="M85 135 L100 105 L115 140" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4"/>
                       {/* Active pulse node — center */}
                       <circle cx="100" cy="105" r="4" fill="#22c55e"/>
                       <circle cx="100" cy="105" r="8" fill="none" stroke="#22c55e" strokeWidth="1" opacity="0.5" className="animate-ping"/>
