@@ -38,17 +38,17 @@ export default function AppShowcase() {
             <PremiumPhoneWrapper style={{ y: y1 }} className="shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
               <div className="flex-1 bg-[#071A2D] p-4 pt-12 flex flex-col">
                 <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">RA</span>
+                  <div className="w-10 h-10 rounded-full bg-[var(--saffron)]/20 border border-[var(--saffron)]/30 flex items-center justify-center">
+                    <span className="text-[var(--saffron)] font-bold text-sm">SP</span>
                   </div>
                   <div>
-                    <h4 className="text-white font-bold text-sm">Rahul A.</h4>
+                    <h4 className="text-white font-bold text-sm">Shardul Pande</h4>
                     <span className="text-[var(--green)] text-[10px] font-mono">15m away via Mesh</span>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="bg-white/10 rounded-2xl rounded-tl-sm p-3 max-w-[85%] text-white/90 text-sm">
-                    Are you on the upper trail? The lower bridge is washed out.
+                    Vishwas, are you on the upper trail? The lower bridge is washed out.
                   </div>
                   <div className="bg-[var(--navy-nav)] rounded-2xl rounded-tr-sm p-3 max-w-[85%] self-end text-white text-sm ml-auto">
                     Yes, took the ridge. We're safe.
@@ -128,11 +128,16 @@ export default function AppShowcase() {
                 </svg>
 
                 <div className="absolute bottom-6 inset-x-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4">
-                  <div className="text-white text-sm font-bold mb-3">Group (3 Active)</div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-[#1264D6] border-2 border-white flex items-center justify-center text-[10px] text-white font-bold">AK</div>
-                    <div className="w-8 h-8 rounded-full bg-[var(--saffron)] border-2 border-white flex items-center justify-center text-[10px] text-white font-bold -ml-4">RJ</div>
-                    <div className="w-8 h-8 rounded-full bg-[var(--green)] border-2 border-white flex items-center justify-center text-[10px] text-white font-bold -ml-4">YOU</div>
+                  <div className="text-white text-sm font-bold mb-3">Group (2 Active)</div>
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-8 h-8 rounded-full bg-[var(--navy-nav)] border-2 border-white flex items-center justify-center text-[10px] text-white font-bold">VT</div>
+                      <span className="text-white/80 text-[10px] font-medium">Vishwas</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-8 h-8 rounded-full bg-[var(--saffron)] border-2 border-white flex items-center justify-center text-[10px] text-white font-bold">SP</div>
+                      <span className="text-white/80 text-[10px] font-medium">Shardul</span>
+                    </div>
                   </div>
                 </div>
               </div>
