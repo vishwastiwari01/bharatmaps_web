@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 export default function SOSOrbital() {
   return (
-    <section className="py-32 bg-[#020812] relative overflow-hidden min-h-[800px] flex items-center">
+    <section className="py-16 sm:py-24 lg:py-32 bg-[#020812] relative overflow-hidden flex items-center">
       
       {/* Immersive Background */}
       <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cartographer.png')]" />
@@ -13,10 +13,10 @@ export default function SOSOrbital() {
           
           {/* LEFT: Typography */}
           <div className="w-full lg:w-[45%] z-20">
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-[1.1]">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1]">
               A signal can travel further than a phone.
             </h2>
-            <p className="text-xl text-white/60 mb-12 max-w-md font-medium">
+            <p className="text-base sm:text-lg text-white/60 mb-8 max-w-md font-medium">
               Broadcast an emergency signal across the local mesh. The network relays it from device to device until help is found.
             </p>
 
@@ -39,7 +39,7 @@ export default function SOSOrbital() {
           </div>
 
           {/* RIGHT: Large Immersive Network Visualization */}
-          <div className="w-full lg:w-[55%] relative h-[500px] sm:h-[600px]">
+          <div className="hidden lg:block w-full lg:w-[55%] relative h-[400px] sm:h-[500px]">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px]">
               
               {/* Distance Rings */}

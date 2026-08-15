@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 export default function OfflineNavigation() {
   return (
-    <section className="py-32 bg-white relative overflow-hidden min-h-[800px] flex items-center">
+    <section className="py-16 sm:py-24 lg:py-32 bg-white relative overflow-hidden flex items-center">
       
       {/* Immersive Map Background */}
       <div className="absolute inset-0 bg-[#e5e7eb]">
@@ -22,7 +22,7 @@ export default function OfflineNavigation() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-8 justify-between">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-8 justify-between">
           
           {/* LEFT: Phone Overlay */}
           <div className="w-full lg:w-[45%] flex justify-center lg:justify-start">

@@ -46,9 +46,9 @@ export default function HowItWorksStory() {
   ]
 
   return (
-    <section id="how-it-works" className="py-32 bg-[#05101E] overflow-hidden" ref={containerRef}>
+    <section id="how-it-works" className="py-16 sm:py-24 lg:py-32 bg-[#05101E] overflow-hidden" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
           How the mesh forms.
         </h2>
         <p className="text-lg text-white/60 font-medium max-w-2xl">
@@ -56,7 +56,22 @@ export default function HowItWorksStory() {
         </p>
       </div>
 
-      <div className="relative h-[400px] w-full flex items-center">
+      {/* Mobile: static grid */}
+      <div className="lg:hidden max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 gap-8 pb-8">
+        {steps.map((step) => (
+          <div key={step.id} className="flex flex-col p-6 bg-white/5 border border-white/10 rounded-2xl">
+            <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center mb-5">
+              <step.icon className="w-6 h-6 text-white/70" />
+            </div>
+            <div className="mono text-[10px] text-white/40 mb-2 tracking-widest">{step.id}</div>
+            <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+            <p className="text-white/60 text-sm leading-relaxed">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop: horizontal scroll */}
+      <div className="hidden lg:block relative h-[400px] w-full">
         {/* Background Network Graphic */}
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at center, var(--saffron) 0%, transparent 70%)', mixBlendMode: 'screen' }} />
         

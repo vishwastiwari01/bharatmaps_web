@@ -17,28 +17,28 @@ export default function AppShowcase() {
   const y2 = useTransform(scrollYProgress, [0, 1], [100, -100])
   
   return (
-    <section id="features" className="bg-white py-32 relative overflow-hidden" ref={containerRef}>
+    <section id="features" className="bg-white py-16 sm:py-24 lg:py-32 relative overflow-hidden" ref={containerRef}>
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.10] pointer-events-none"
         style={{ backgroundImage: "url('/background.png')" }}
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-48 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 sm:space-y-32 lg:space-y-44 relative z-10">
         
         {/* Feature 1: Offline Messaging */}
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-32">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
           <div className="w-full lg:w-1/2">
             <div className="inline-flex items-center gap-2 mb-6">
               <MessageSquare className="w-4 h-4 text-[var(--saffron)]" />
               <span className="mono text-[10px] font-bold tracking-widest text-[var(--saffron)] uppercase">Encrypted</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-[var(--text-primary)]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-[var(--text-primary)]">
               Peer-to-peer<br/>messaging.
             </h2>
             <p className="text-lg text-[var(--text-secondary)] font-medium max-w-md">
               Send encrypted text messages and broadcast critical updates directly to nearby devices using Bluetooth Low Energy, completely bypassing cell towers.
             </p>
           </div>
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+          <div className="w-full lg:w-1/2 flex justify-center">
             <PremiumPhoneWrapper style={{ y: y1 }} className="shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
               <div className="flex-1 bg-[#071A2D] p-4 pt-12 flex flex-col">
                 <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/10">
@@ -64,13 +64,13 @@ export default function AppShowcase() {
         </div>
 
         {/* Feature 2: SOS */}
-        <div className="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-32">
+        <div className="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-20">
           <div className="w-full lg:w-1/2">
             <div className="inline-flex items-center gap-2 mb-6">
               <AlertCircle className="w-4 h-4 text-[var(--red-sos)]" />
               <span className="mono text-[10px] font-bold tracking-widest text-[var(--red-sos)] uppercase">Emergency</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-[var(--text-primary)]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-[var(--text-primary)]">
               Broadcast SOS.<br/>Find help locally.
             </h2>
             <p className="text-lg text-[var(--text-secondary)] font-medium max-w-md">
@@ -98,13 +98,13 @@ export default function AppShowcase() {
         </div>
 
         {/* Feature 3: Live Location */}
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-32">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
           <div className="w-full lg:w-1/2">
             <div className="inline-flex items-center gap-2 mb-6">
               <Users className="w-4 h-4 text-[#1264D6]" />
               <span className="mono text-[10px] font-bold tracking-widest text-[#1264D6] uppercase">Awareness</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-[var(--text-primary)]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-[var(--text-primary)]">
               See who's<br/>around you.
             </h2>
             <p className="text-lg text-[var(--text-secondary)] font-medium max-w-md">
